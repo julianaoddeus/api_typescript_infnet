@@ -1,0 +1,10 @@
+[
+  {
+    "id": "1",
+    "name": "Java com Spring Boot",
+    "description": "Com esse curso você vai aprender a fazer uma API de verdade",
+    "startDate": "2026-09-21",
+    "stock": 100,
+    "imageURL": "https://placehold.co/200x200"
+  }
+]

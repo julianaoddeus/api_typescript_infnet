@@ -11,6 +11,12 @@ export class UserRepository {
     return JSON.parse(data);
   }
 
+  async findOne(userId: string) {
+    const users = await this.findAll();
+
+    return users.find((user: User) => user.id === userId);
+  }
+
   async create(user: object) {
     const users = await this.findAll();
 

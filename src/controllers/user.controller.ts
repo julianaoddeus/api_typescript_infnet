@@ -16,11 +16,27 @@ export class UserController {
     return res.status(200).json(users);
   };
 
+  findOne = async (req: Request, res: Response) => {
+    const id = req.params.id as string;
+
+    const user = await this.service.findOne(id);
+
+    return res.status(200).json(user);
+  };
+
   update = async (req: Request, res: Response) => {
-    const id = req.params.id as string;    
+    const id = req.params.id as string;
 
     const user = await this.service.update(id, req.body);
-    
+
     return res.status(200).json(user);
+  };
+
+  delete = async (req: Request, res: Response) => {
+    const id = req.params.id as string;
+
+    await this.service.delete(id);
+
+    return res.status(200).json({ message: "User deleted with success" });
   };
 }

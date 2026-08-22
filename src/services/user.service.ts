@@ -12,6 +12,10 @@ export class UserService {
     return await this.repository.findAll();
   }
 
+  async findOne(userId: string) {
+    return await this.repository.findOne(userId);
+  }
+
   async update(userId: string, data: Partial<User>) {
     return await this.repository.update(userId, data);
   }
