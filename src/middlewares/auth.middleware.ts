@@ -26,6 +26,6 @@ export const requireAuth = (
     req.role = payload.role;
     next();
   } catch {
-    return res.status(403).json({ mensagem: "Token inválido" });
+    return res.status(403).json({ mensagem: "Token inválido ou expirado." });
   }
 };
