@@ -1,31 +1,20 @@
 import type { Request, Response } from "express";
 import type { CourseService } from "../services/course.service.js";
-import { creatCourseSchema } from "../validators/course.validator.js";
+import {courseSchema } from "../validators/course.validator.js";
+
 
 export class CourseController {
   constructor(private service: CourseService) {}
 
   create = async (req: Request, res: Response) => {
     try {
-      const parsed = creatCourseSchema.safeParse(req.body);
+      const parsed = courseSchema.safeParse(req.body);
 
       if (!parsed.success) {
         return res
           .status(400)
           .json({ errors: parsed.error.flatten().fieldErrors });
-      }
-
-      if (!parsed.data.name)
-        return res.status(400).json({ message: "Nome é obrigatório" });
-
-      if (!parsed.data.description)
-        return res.status(400).json({ message: "Descrição é obrigatório" });
-
-      if (!parsed.data.startDate)
-        return res.status(400).json({ message: "Data inicial é obrigatório" });
-
-      if (!parsed.data.stock)
-        return res.status(400).json({ message: "quantidade é obrigatório" });
+      }      
 
       const course = await this.service.create(parsed.data);
       return res.status(201).json(course);
@@ -59,7 +48,7 @@ export class CourseController {
 
   update = async (req: Request, res: Response) => {
     try {
-      const parsed = creatCourseSchema.safeParse(req.body);
+      const parsed = courseSchema.safeParse(req.body);
 
       if (!parsed.success) {
         return res
@@ -67,20 +56,8 @@ export class CourseController {
           .json({ errors: parsed.error.flatten().fieldErrors });
       }
 
-      if (!parsed.data?.name)
-        return res.status(400).json({ message: "Nome é obrigatório" });
-
-      if (!parsed.data?.description)
-        return res.status(400).json({ message: "Descrição é obrigatório" });
-
-      if (!parsed.data?.startDate)
-        return res.status(400).json({ message: "Data inicial é obrigatório" });
-
-      if (!parsed.data?.stock)
-        return res.status(400).json({ message: "quantidade é obrigatório" });
-
       const id = req.params?.id as string;
-      const course = await this.service.update(id, req.body);
+      const course = await this.service.update(id, parsed.data);
       return res.status(200).json(course);
     } catch (err: any) {
       return res

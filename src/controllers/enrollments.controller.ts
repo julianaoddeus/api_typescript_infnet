@@ -5,7 +5,7 @@ export class EnrollmentController {
   constructor(private service: EnrollmentService) {}
 
   create = async (req: Request, res: Response) => {
-    try {   
+    try {
       const enrollment = await this.service.create(req.body);
       return res.status(201).json(enrollment);
     } catch (err: any) {
@@ -43,10 +43,11 @@ export class EnrollmentController {
     return res.status(200).json(enrollment);
   };
 
-  delete = async (req: Request, res: Response) => {
+  cancel = async (req: Request, res: Response) => {
     const id = req.params?.id as string;
 
-    await this.service.delete(id);
+    await this.service.cancel(id);
+
     return res
       .status(200)
       .json({ message: "Inscrição cancelada com sucesso!" });

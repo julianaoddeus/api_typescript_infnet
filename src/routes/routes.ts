@@ -47,6 +47,6 @@ router.post("/enrollments", requireAuth, enrollmentController.create);
 router.get("/enrollments", requireAuth, enrollmentController.findAll);
 router.get("/enrollments/:id", requireAuth, enrollmentController.findOne);
 router.put("/enrollments/:id", requireAuth, enrollmentController.update);
-router.delete("/enrollments/:id", requireAuth, enrollmentController.delete);
+router.patch("/enrollments/:id", requireAuth, enrollmentController.cancel);
 
 export default router;

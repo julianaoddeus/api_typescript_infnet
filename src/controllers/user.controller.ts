@@ -1,24 +1,21 @@
 import type { Request, Response } from "express";
 import type { UserService } from "../services/user.service.js";
-import { creatUserSchema } from "../validators/user.validator.js";
+import { userSchema } from "../validators/user.validator.js";
 
 export class UserController {
   constructor(private service: UserService) {}
 
   create = async (req: Request, res: Response) => {
     try {
-      const parsed = creatUserSchema.safeParse(req.body);
+      const parsed = userSchema.safeParse(req.body);
 
-      if (!parsed.data?.username)
-        return res.status(400).json({ message: "Nome é obrigatório" });
+      if (!parsed.success) {
+        return res
+          .status(400)
+          .json({ errors: parsed.error.flatten().fieldErrors });
+      }
 
-      if (!parsed.data?.email)
-        return res.status(400).json({ message: "E-mail é obrigatório" });
-
-      if (!parsed.data?.password)
-        return res.status(400).json({ message: "Senha é obrigatório" });
-
-      const user = await this.service.create(req.body);
+      const user = await this.service.create(parsed.data);
       return res.status(201).json(user);
     } catch (err: any) {
       return res
@@ -52,19 +49,16 @@ export class UserController {
 
   update = async (req: Request, res: Response) => {
     try {
-      const parsed = creatUserSchema.safeParse(req.body);
+      const parsed = userSchema.safeParse(req.body);
 
-      if (!parsed.data?.username)
-        return res.status(400).json({ message: "Nome é obrigatório" });
-
-      if (!parsed.data?.email)
-        return res.status(400).json({ message: "E-mail é obrigatório" });
-
-      if (!parsed.data?.password)
-        return res.status(400).json({ message: "Senha é obrigatório" });
+      if (!parsed.success) {
+        return res
+          .status(400)
+          .json({ errors: parsed.error.flatten().fieldErrors });
+      }
 
       const id = req.params?.id as string;
-      const user = await this.service.update(id, req.body);
+      const user = await this.service.update(id, parsed.data);
       return res.status(200).json(user);
     } catch (err: any) {
       return res

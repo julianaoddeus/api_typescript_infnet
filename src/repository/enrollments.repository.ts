@@ -51,7 +51,7 @@ export class EnrollmentRepository {
     return enrollments[index];
   }
 
-  async delete(enrollmentId: string) {
+  async cancel(enrollmentId: string) {
     const enrollments = await this.findAll();
 
     const filteredEnrollments = enrollments.filter(
