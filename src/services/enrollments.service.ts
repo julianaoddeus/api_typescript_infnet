@@ -11,15 +11,17 @@ export class EnrollmentService {
   ) {}
 
   async create(enrollment: CreateEnrollmentInput) {
-    const user = await this.userRepository.findOne(enrollment.userId);
+    const { id, ...safeData } = enrollment as any;
+
+    const user = await this.userRepository.findOne(safeData.userId);
     if (!user) throw { status: 404, message: "Usuário não encontrado." };
 
-    const course = await this.courseRepository.findOne(enrollment.courseId);
+    const course = await this.courseRepository.findOne(safeData.courseId);
     if (!course) throw { status: 404, message: "Curso não encontrado." };
 
     const newEnrollment = {
       id: crypto.randomUUID(),
-      ...enrollment,
+      ...safeData,
     };
 
     return await this.repository.create(newEnrollment);
@@ -40,9 +42,10 @@ export class EnrollmentService {
   }
 
   async update(enrollmentId: string, data: Partial<Enrollment>) {
+    const { id, ...safeData } = data as any;
     const exists = await this.repository.findOne(enrollmentId);
     if (!exists) throw { status: 404, message: "Matrícula não encontrada." };
-    return await this.repository.update(enrollmentId, data);
+    return await this.repository.update(enrollmentId, safeData);
   }
 
   async delete(enrollmentId: string) {

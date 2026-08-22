@@ -5,9 +5,10 @@ export class CourseService {
   constructor(private repository: CourseRepository) {}
 
   async create(course: CreateCourseInput) {
+    const { id, ...safeData } = course as any;
     const newCourse = {
       id: crypto.randomUUID(),
-      ...course,
+      ...safeData,
     };
     return await this.repository.create(newCourse);
   }
@@ -21,9 +22,10 @@ export class CourseService {
   }
 
   async update(courseId: string, data: Partial<Course>) {
+    const { id, ...safeData } = data as any;
     const exists = await this.repository.findOne(courseId);
     if (!exists) throw { status: 404, message: "Curso não encontrado." };
-    return await this.repository.update(courseId, data);
+    return await this.repository.update(courseId, safeData);
   }
 
   async delete(courseId: string) {

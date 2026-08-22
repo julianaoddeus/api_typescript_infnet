@@ -1,1 +1,10 @@
-[]
+[
+  {
+    "id": "17bacc1e-a2c9-4c5c-afa1-6aad12ae3d79",
+    "userId": "cc65311d-1ced-4ab6-9c13-3cd70b851c52",
+    "courseId": "62b4059d-e9d9-4143-ac5d-7a4d82aa839e",
+    "status": "enrolled",
+    "enrolledAt": "2023-01-01T00:00:00.000Z",
+    "cancelledAt": "2023-01-01T00:00:00.000Z"
+  }
+]

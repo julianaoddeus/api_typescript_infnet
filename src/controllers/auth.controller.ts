@@ -9,9 +9,9 @@ export class AuthController {
 
   login = async (req: Request, res: Response) => {
     try {
-      const { username, password } = req.body;
+      const { username, email, password } = req.body;
 
-      const user = await this.userService.findByEmailOrUsername(username);
+      const user = await this.userService.findByEmailOrUsername(email ?? username);
 
       if (!user)
         return res.status(401).json({ message: "Credenciais inválidas" });

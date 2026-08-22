@@ -1,1 +1,26 @@
-[]
+[
+  {
+    "id": "62b4059d-e9d9-4143-ac5d-7a4d82aa839e",
+    "name": "Java com Spring Boot",
+    "description": "Aprenda a desenvolver APIs REST completas utilizando Java e Spring Boot.",
+    "startDate": "2026-09-21",
+    "stock": 100,
+    "imageURL": "https://placehold.co/200x200"
+  },
+  {
+    "id": "a72020ff-2de5-4bfb-99eb-341b14e57ff3",
+    "name": "TypeScript do Zero",
+    "description": "Aprenda TypeScript desde os fundamentos até conceitos avançados para desenvolvimento de aplicações.",
+    "startDate": "2026-10-05",
+    "stock": 80,
+    "imageURL": "https://placehold.co/200x200"
+  },
+  {
+    "id": "f517051a-b6bc-4c66-94a1-3fc198ccf1fa",
+    "name": "Node.js e Express",
+    "description": "Construa APIs REST utilizando Node.js, Express e boas práticas de arquitetura.",
+    "startDate": "2026-10-19",
+    "stock": 60,
+    "imageURL": "https://placehold.co/200x200"
+  }
+]
