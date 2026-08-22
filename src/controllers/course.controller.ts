@@ -1,15 +1,38 @@
 import type { Request, Response } from "express";
 import type { CourseService } from "../services/course.service.js";
+import { creatCourseSchema } from "../validators/course.validator.js";
 
 export class CourseController {
   constructor(private service: CourseService) {}
 
   create = async (req: Request, res: Response) => {
     try {
-      const course = await this.service.create(req.body);
+      const parsed = creatCourseSchema.safeParse(req.body);
+
+      if (!parsed.success) {
+        return res
+          .status(400)
+          .json({ errors: parsed.error.flatten().fieldErrors });
+      }
+
+      if (!parsed.data.name)
+        return res.status(400).json({ message: "Nome é obrigatório" });
+
+      if (!parsed.data.description)
+        return res.status(400).json({ message: "Descrição é obrigatório" });
+
+      if (!parsed.data.startDate)
+        return res.status(400).json({ message: "Data inicial é obrigatório" });
+
+      if (!parsed.data.stock)
+        return res.status(400).json({ message: "quantidade é obrigatório" });
+
+      const course = await this.service.create(parsed.data);
       return res.status(201).json(course);
     } catch (err: any) {
-      return res.status(err.status ?? 500).json({ message: err.message ?? "Erro ao criar curso" });
+      return res
+        .status(err.status ?? 500)
+        .json({ message: err.message ?? "Erro ao criar curso" });
     }
   };
 
@@ -24,9 +47,10 @@ export class CourseController {
 
   findOne = async (req: Request, res: Response) => {
     try {
-      const id = req.params.id as string;
+      const id = req.params?.id as string;
       const course = await this.service.findOne(id);
-      if (!course) return res.status(404).json({ message: "Curso não encontrado" });
+      if (!course)
+        return res.status(404).json({ message: "Curso não encontrado" });
       return res.status(200).json(course);
     } catch (err: any) {
       return res.status(500).json({ message: "Erro ao buscar curso" });
@@ -35,21 +59,45 @@ export class CourseController {
 
   update = async (req: Request, res: Response) => {
     try {
-      const id = req.params.id as string;
+      const parsed = creatCourseSchema.safeParse(req.body);
+
+      if (!parsed.success) {
+        return res
+          .status(400)
+          .json({ errors: parsed.error.flatten().fieldErrors });
+      }
+
+      if (!parsed.data?.name)
+        return res.status(400).json({ message: "Nome é obrigatório" });
+
+      if (!parsed.data?.description)
+        return res.status(400).json({ message: "Descrição é obrigatório" });
+
+      if (!parsed.data?.startDate)
+        return res.status(400).json({ message: "Data inicial é obrigatório" });
+
+      if (!parsed.data?.stock)
+        return res.status(400).json({ message: "quantidade é obrigatório" });
+
+      const id = req.params?.id as string;
       const course = await this.service.update(id, req.body);
       return res.status(200).json(course);
     } catch (err: any) {
-      return res.status(err.status ?? 500).json({ message: err.message ?? "Erro ao atualizar curso" });
+      return res
+        .status(err.status ?? 500)
+        .json({ message: err.message ?? "Erro ao atualizar curso" });
     }
   };
 
   delete = async (req: Request, res: Response) => {
     try {
-      const id = req.params.id as string;
+      const id = req.params?.id as string;
       await this.service.delete(id);
       return res.status(200).json({ message: "Curso cancelado com sucesso!" });
     } catch (err: any) {
-      return res.status(err.status ?? 500).json({ message: err.message ?? "Erro ao excluir curso" });
+      return res
+        .status(err.status ?? 500)
+        .json({ message: err.message ?? "Erro ao excluir curso" });
     }
   };
 }

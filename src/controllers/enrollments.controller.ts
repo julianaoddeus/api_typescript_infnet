@@ -5,7 +5,7 @@ export class EnrollmentController {
   constructor(private service: EnrollmentService) {}
 
   create = async (req: Request, res: Response) => {
-    try {
+    try {   
       const enrollment = await this.service.create(req.body);
       return res.status(201).json(enrollment);
     } catch (err: any) {
@@ -19,7 +19,7 @@ export class EnrollmentController {
   };
 
   findOne = async (req: Request, res: Response) => {
-    const id = req.params.id as string;
+    const id = req.params?.id as string;
 
     const enrollment = await this.service.findOne(id);
     return res.status(200).json(enrollment);
@@ -27,7 +27,7 @@ export class EnrollmentController {
 
   findByUser = async (req: Request, res: Response) => {
     try {
-      const id = req.params.id as string;
+      const id = req.params?.id as string;
 
       const enrollments = await this.service.findByUser(id);
       return res.status(200).json(enrollments);
@@ -37,14 +37,14 @@ export class EnrollmentController {
   };
 
   update = async (req: Request, res: Response) => {
-    const id = req.params.id as string;
+    const id = req.params?.id as string;
 
     const enrollment = await this.service.update(id, req.body);
     return res.status(200).json(enrollment);
   };
 
   delete = async (req: Request, res: Response) => {
-    const id = req.params.id as string;
+    const id = req.params?.id as string;
 
     await this.service.delete(id);
     return res
