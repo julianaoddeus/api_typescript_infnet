@@ -1,11 +1,15 @@
-import type { Course } from "../models/courses.model.js";
+import type { Course, CreateCourseInput } from "../models/courses.model.js";
 import type { CourseRepository } from "../repository/course.repository.js";
 
 export class CourseService {
   constructor(private repository: CourseRepository) {}
 
-  async create(course: Course) {
-    return await this.repository.create(course);
+  async create(course: CreateCourseInput) {
+    const newCourse = {
+      id: crypto.randomUUID(),
+      ...course,
+    };
+    return await this.repository.create(newCourse);
   }
 
   async findAll() {
@@ -15,12 +19,16 @@ export class CourseService {
   async findOne(courseId: string) {
     return await this.repository.findOne(courseId);
   }
-  
+
   async update(courseId: string, data: Partial<Course>) {
+    const exists = await this.repository.findOne(courseId);
+    if (!exists) throw { status: 404, message: "Curso não encontrado." };
     return await this.repository.update(courseId, data);
   }
 
   async delete(courseId: string) {
+    const exists = await this.repository.findOne(courseId);
+    if (!exists) throw { status: 404, message: "Curso não encontrado." };
     return await this.repository.delete(courseId);
   }
 }

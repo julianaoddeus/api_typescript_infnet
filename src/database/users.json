@@ -1,8 +1,9 @@
 [
   {
-    "id": "1",
-    "username": "Dom Casmurr 2",
-    "email": "dom@email.com",
-    "password": "senha123"
+    "id": "cc65311d-1ced-4ab6-9c13-3cd70b851c52",
+    "username": "Julia Rodrigues",
+    "email": "julia@email.com",
+    "password": "$2b$10$u7Xy7lDFbtWwvYJH9yd0k.AvJlTANRatMai0NMH.v99Y2H3iPZAx6",
+    "role": "READER"
   }
 ]

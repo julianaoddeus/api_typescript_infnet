@@ -6,3 +6,5 @@ export class Course {
   stock!: number;
   imageURL!: string;
 }
+
+export type CreateCourseInput = Omit<Course, "id">;

@@ -37,6 +37,6 @@ export class CourseController {
 
     await this.service.delete(id);
 
-    return res.status(200).json({ message: "Course deleted with success" });
+    return res.status(200).json({ message: "Curso cancelado com sucesso!" });
   };
 }

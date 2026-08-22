@@ -17,6 +17,17 @@ export class UserRepository {
     return users.find((user: User) => user.id === userId);
   }
 
+  async findByEmailOrUsername(identifier: string) {
+    const users = await this.findAll();
+
+    return users.find(
+      (user: User) =>
+        user.email === identifier ||
+        user.username?.trim().toLowerCase() ===
+          identifier?.trim().toLowerCase(),
+    );
+  }
+
   async create(user: object) {
     const users = await this.findAll();
 

@@ -6,3 +6,5 @@ export class Enrollment {
   enrolledAt!: Date;
   cancelledAt!: Date;
 }
+
+export type CreateEnrollmentInput = Omit<Enrollment, "id">;

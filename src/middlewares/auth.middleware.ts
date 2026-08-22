@@ -1,6 +1,6 @@
 import type { NextFunction, Request, Response } from "express";
-import { UserRole } from "../enums/user.enum.js";
 import jwt from "jsonwebtoken";
+import type { UserRole } from "../enums/user.enum.js";
 
 export const requireAuth = (
   req: Request,
@@ -21,8 +21,9 @@ export const requireAuth = (
   if (!secret) throw new Error("token não configurado.");
 
   try {
-    req.userId = jwt.verify(token, secret);
-    req.role = UserRole.ADMIN;
+    const payload = jwt.verify(token, secret) as { id: string; role: UserRole };
+    req.userId = payload.id;
+    req.role = payload.role;
     next();
   } catch {
     return res.status(403).json({ mensagem: "Token inválido" });

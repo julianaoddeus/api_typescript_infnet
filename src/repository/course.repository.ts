@@ -11,11 +11,10 @@ export class CourseRepository {
     return JSON.parse(data);
   }
 
-   async findOne(courseId: string) {
-      const courses = await this.findAll();
-  
-      return courses.find((course: Course) => course.id === courseId);
-    }
+  async findOne(courseId: string) {
+    const courses = await this.findAll();
+    return courses.find((course: Course) => course.id === courseId);
+  }
 
   async create(course: object) {
     const courses = await this.findAll();
@@ -29,8 +28,7 @@ export class CourseRepository {
 
   async update(courseId: string, data: Partial<Course>) {
     const courses = await this.findAll();
-
-    const index = courses.findIndex((course: any) => course.id === courseId);
+    const index = courses.findIndex((course: Course) => course.id === courseId);
 
     courses[index] = {
       ...courses[index],
