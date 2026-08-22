@@ -9,7 +9,7 @@ export class UserService {
   async create(user: CreateUserInput) {
     const existing = await this.repository.findByEmailOrUsername(user.email);
     if (existing)
-      throw { status: 409, message: "Email ou username já cadastrado." };
+      throw { status: 409, message: "Email ou nome já cadastrado." };
 
     const hashedPassword = await bcrypt.hash(user.password, 10);
 

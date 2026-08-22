@@ -3,14 +3,14 @@ import bcrypt from "bcrypt";
 import jwt from "jsonwebtoken";
 
 import type { UserService } from "../services/user.service.js";
-import { userSchema } from "../validators/user.validator.js";
+import { authSchema } from "../validators/user.validator.js";
 
 export class AuthController {
   constructor(private userService: UserService) {}
 
   login = async (req: Request, res: Response) => {
     try {
-      const parsed = userSchema.safeParse(req.body);
+      const parsed = authSchema.safeParse(req.body);
 
       if (!parsed.success) {
         return res
@@ -19,10 +19,13 @@ export class AuthController {
       }
 
       const { username, email, password } = parsed.data;
+      const loginIdentifier = email ?? username;
 
-      const user = await this.userService.findByEmailOrUsername(
-        email ?? username,
-      );
+      if (!loginIdentifier) {
+        return res.status(400).json({ message: "Informe nome ou email" });
+      }
+
+      const user = await this.userService.findByEmailOrUsername(loginIdentifier);
 
       if (!user)
         return res.status(401).json({ message: "Credenciais inválidas" });
