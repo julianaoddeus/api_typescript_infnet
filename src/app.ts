@@ -8,11 +8,8 @@ const app: Express = express();
 app.use(express.json());
 
 app.use((req: Request, res: Response, next: NextFunction) => {
-  const mutationMethods = ["POST", "PUT", "PATCH", "DELETE"];
-  if (
-    mutationMethods.includes(req.method) &&
-    !req.is("application/json")
-  ) {
+  const mutationMethods = ["POST", "PUT", "PATCH"];
+  if (mutationMethods.includes(req.method) && !req.is("application/json")) {
     res.status(415).json({ error: "Content-Type deve ser application/json" });
     return;
   }

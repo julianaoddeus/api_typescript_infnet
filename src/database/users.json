@@ -1,8 +1,8 @@
 [
   {
     "id": "39305437-5423-48d0-8092-e8977533d7ab",
-    "username": "Juliana Oliveira",
-    "email": "juliana@email.com",
+    "username": "admin",
+    "email": "admin@email.com",
     "password": "$2b$10$j1l9lLJqJvguVa7BdfUxaO8hJV/4g8afeU89gb0oDsTRwMikZS7rm",
     "role": "ADMIN"
   },

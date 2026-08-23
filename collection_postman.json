@@ -1,0 +1,180 @@
+{
+  "info": {
+    "name": "api_typescript_infnet",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+  },
+  "variable": [
+    { "key": "baseUrl", "value": "http://localhost:3000" },
+    { "key": "token", "value": "" }
+  ],
+  "item": [
+    {
+      "name": "Auth",
+      "item": [
+        {
+          "name": "Login",
+          "request": {
+            "method": "POST",
+            "header": [{ "key": "Content-Type", "value": "application/json" }],
+            "url": "{{baseUrl}}/auth/login",
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"email\": \"admin@email.com\",\n  \"password\": \"senha123\"\n}"
+            }
+          }
+        }
+      ]
+    },
+    {
+      "name": "Users",
+      "item": [
+        {
+          "name": "Criar usuário",
+          "request": {
+            "method": "POST",
+            "header": [{ "key": "Content-Type", "value": "application/json" }],
+            "url": "{{baseUrl}}/users",
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"username\": \"demo\",\n  \"email\": \"demo@email.com\",\n  \"password\": \"senhademo\"\n}"
+            }
+          }
+        },
+        {
+          "name": "Listar usuários",
+          "request": {
+            "method": "GET",
+            "header": [{ "key": "Authorization", "value": "Bearer {{token}}" }],
+            "url": "{{baseUrl}}/users"
+          }
+        },
+        {
+          "name": "Buscar usuário por ID",
+          "request": {
+            "method": "GET",
+            "header": [{ "key": "Authorization", "value": "Bearer {{token}}" }],
+            "url": "{{baseUrl}}/users/:id"
+          }
+        },
+        {
+          "name": "Atualizar usuário",
+          "request": {
+            "method": "PUT",
+            "header": [
+              { "key": "Content-Type", "value": "application/json" },
+              { "key": "Authorization", "value": "Bearer {{token}}" }
+            ],
+            "url": "{{baseUrl}}/users/:id",
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"username\": \"joao_atualizado\",\n  \"email\": \"joao@email.com\",\n  \"password\": \"123456\"\n}"
+            }
+          }
+        },
+        {
+          "name": "Deletar usuário",
+          "request": {
+            "method": "DELETE",
+            "header": [{ "key": "Authorization", "value": "Bearer {{token}}" }],
+            "url": "{{baseUrl}}/users/:id"
+          }
+        }
+      ]
+    },
+    {
+      "name": "Courses",
+      "item": [
+        {
+          "name": "Criar curso",
+          "request": {
+            "method": "POST",
+            "header": [
+              { "key": "Content-Type", "value": "application/json" },
+              { "key": "Authorization", "value": "Bearer {{token}}" }
+            ],
+            "url": "{{baseUrl}}/courses",
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"name\": \"Curso de TypeScript\",\n  \"description\": \"Aprenda TypeScript do zero ao avançado\",\n  \"startDate\": \"2025-08-01\",\n  \"stock\": 30,\n  \"imageURL\": \"https://example.com/image.png\"\n}"
+            }
+          }
+        },
+        {
+          "name": "Listar cursos",
+          "request": {
+            "method": "GET",
+            "header": [{ "key": "Authorization", "value": "Bearer {{token}}" }],
+            "url": "{{baseUrl}}/courses"
+          }
+        },
+        {
+          "name": "Buscar curso por ID",
+          "request": {
+            "method": "GET",
+            "header": [{ "key": "Authorization", "value": "Bearer {{token}}" }],
+            "url": "{{baseUrl}}/courses/:id"
+          }
+        },
+        {
+          "name": "Cursos com matrícula do usuário",
+          "request": {
+            "method": "GET",
+            "header": [{ "key": "Authorization", "value": "Bearer {{token}}" }],
+            "url": "{{baseUrl}}/courses/enrollments/:userId"
+          }
+        },
+        {
+          "name": "Atualizar curso",
+          "request": {
+            "method": "PUT",
+            "header": [
+              { "key": "Content-Type", "value": "application/json" },
+              { "key": "Authorization", "value": "Bearer {{token}}" }
+            ],
+            "url": "{{baseUrl}}/courses/:id",
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"name\": \"Curso de TypeScript Avançado\",\n  \"description\": \"Aprenda TypeScript do zero ao avançado\",\n  \"startDate\": \"2025-09-01\",\n  \"stock\": 20,\n  \"imageURL\": \"https://example.com/image.png\"\n}"
+            }
+          }
+        },
+        {
+          "name": "Deletar curso",
+          "request": {
+            "method": "DELETE",
+            "header": [{ "key": "Authorization", "value": "Bearer {{token}}" }],
+            "url": "{{baseUrl}}/courses/:id"
+          }
+        }
+      ]
+    },
+    {
+      "name": "Enrollments",
+      "item": [
+        {
+          "name": "Criar matrícula",
+          "request": {
+            "method": "POST",
+            "header": [
+              { "key": "Content-Type", "value": "application/json" },
+              { "key": "Authorization", "value": "Bearer {{token}}" }
+            ],
+            "url": "{{baseUrl}}/enrollments",
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"userId\": \"<user-id>\",\n  \"courseId\": \"<course-id>\"\n}"
+            }
+          }
+        },
+        {
+          "name": "Cancelar matrícula",
+          "request": {
+            "method": "PATCH",
+            "header": [{ "key": "Authorization", "value": "Bearer {{token}}" }],
+            "url": "{{baseUrl}}/enrollments/:id"
+          }
+        }
+      ]
+    }
+  ]
+}

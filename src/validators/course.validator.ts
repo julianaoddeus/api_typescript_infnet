@@ -3,27 +3,29 @@ import z from "zod";
 export const courseSchema = z.object({
   name: z
     .string({
-      error: "Nome é obrigatório.",
+      error: "Nome do curso é obrigatório.",
     })
-    .min(10, {
-      error: "Nome deve ter pelo menos 10 caracteres.",
+    .min(5, {
+      error: "Nome deve ter pelo menos 5 caracteres.",
     }),
   description: z
     .string({
-      error: "Descrição é obrigatória.",
+      error: "Descrição do curso é obrigatória.",
     })
-    .min(3, {
-      error: "Descrição deve ter pelo menos 3 caracteres.",
+    .min(10, {
+      error: "Descrição deve ter pelo menos 10 caracteres.",
     }),
   startDate: z.coerce.date({
-    error: "Data é obrigatório.",
+    error: "Data de inicio do curso é obrigatório.",
   }),
   stock: z
     .number({
-      error: "Quantidade é obrigatório.",
+      error: "Quantidade de vagas é obrigatório.",
     })
     .min(1, {
       error: "Quantidade deve ter pelo menos 1.",
     }),
-    imageURL: z.string(),
+  imageURL: z.string({
+    error: "Imagem para capa do curso é obrigatória.",
+  }),
 });
