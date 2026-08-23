@@ -1,18 +1,18 @@
 [
   {
-    "id": "1f7f45ee-7c37-4515-b441-3833803cb0b5",
-    "userId": "cc65311d-1ced-4ab6-9c13-3cd70b851c52",
+    "id": "39b19679-0fdf-4275-a95f-e6b2039ba71b",
+    "userId": "7141fa54-142a-4ba6-ab20-a8f62a2dd244",
     "courseId": "62b4059d-e9d9-4143-ac5d-7a4d82aa839e",
     "status": "enrolled",
     "enrolledAt": "2023-01-01T00:00:00.000Z",
-    "cancelledAt": "2023-01-01T00:00:00.000Z"
+    "cancelledAt": ""
   },
   {
-    "id": "7fa80ef2-f1bb-493f-85ee-d68693b24d30",
-    "userId": "cc65311d-1ced-4ab6-9c13-3cd70b851c52",
+    "id": "5b4f9d18-91db-48c1-a675-53cf98fc4843",
+    "userId": "16fcd3f9-940f-4fe9-a0ad-4e7228dac056",
     "courseId": "62b4059d-e9d9-4143-ac5d-7a4d82aa839e",
-    "status": "enrolled",
-    "enrolledAt": "2023-01-01T00:00:00.000Z",
-    "cancelledAt": "2023-01-01T00:00:00.000Z"
+    "status": "active",
+    "enrolledAt": "2026-08-24",
+    "cancelledAt": ""
   }
 ]

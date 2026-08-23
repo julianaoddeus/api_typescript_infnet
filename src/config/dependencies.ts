@@ -15,10 +15,11 @@ export const userController = new UserController(userService);
 
 const courseRepository = new CourseRepository();
 const courseService = new CourseService(courseRepository);
-export const courseController = new CourseController(courseService);
 
 const enrollmentRepository = new EnrollmentRepository();
 const enrollmentService = new EnrollmentService(enrollmentRepository, userRepository, courseRepository);
+
+export const courseController = new CourseController(courseService, enrollmentService);
 export const enrollmentController = new EnrollmentController(enrollmentService);
 
 export const authController = new AuthController(userService);

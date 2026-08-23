@@ -8,6 +8,7 @@ export class UserService {
 
   async create(user: CreateUserInput) {
     const existing = await this.repository.findByEmailOrUsername(user.email);
+    
     if (existing)
       throw { status: 409, message: "Email ou nome já cadastrado." };
 

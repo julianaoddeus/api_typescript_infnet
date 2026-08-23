@@ -25,5 +25,5 @@ export const courseSchema = z.object({
     .min(1, {
       error: "Quantidade deve ter pelo menos 1.",
     }),
-  imageURL: z.string().optional(),
+    imageURL: z.string(),
 });

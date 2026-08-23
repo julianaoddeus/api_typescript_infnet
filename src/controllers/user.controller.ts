@@ -27,6 +27,7 @@ export class UserController {
   findAll = async (req: Request, res: Response) => {
     try {
       const users = await this.service.findAll();
+
       return res.status(200).json(users);
     } catch (error) {
       console.error(error);
@@ -37,9 +38,12 @@ export class UserController {
   findOne = async (req: Request, res: Response) => {
     try {
       const id = req.params?.id as string;
+
       const user = await this.service.findOne(id);
+
       if (!user)
         return res.status(404).json({ message: "Usuário não encontrado" });
+
       return res.status(200).json(user);
     } catch (error) {
       console.error(error);

@@ -48,16 +48,7 @@ export class EnrollmentService {
   }
 
   async findByUser(userId: string) {
-    const user = await this.userRepository.findOne(userId);
-    if (!user) throw { status: 404, message: "Usuário não encontrado." };
     return await this.repository.findByUser(userId);
-  }
-
-  async update(enrollmentId: string, data: Partial<Enrollment>) {
-    const { id, ...safeData } = data as any;
-    const exists = await this.repository.findOne(enrollmentId);
-    if (!exists) throw { status: 404, message: "Matrícula não encontrada." };
-    return await this.repository.update(enrollmentId, safeData);
   }
 
   async cancel(enrollmentId: string) {

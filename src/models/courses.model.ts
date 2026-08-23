@@ -4,7 +4,7 @@ export class Course {
   description!: string;
   startDate!: Date;
   stock!: number;
-  imageURL!: string;
+  imageURL?: string | null;
 }
 
 export type CreateCourseInput = Omit<Course, "id">;

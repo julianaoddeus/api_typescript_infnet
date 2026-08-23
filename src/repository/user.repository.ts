@@ -1,20 +1,24 @@
 import fs from "node:fs/promises";
 import path from "node:path";
 import type { User } from "../models/users.model.js";
+import { databasePath } from "../config/database.js";
 
-const filePath = path.resolve("src/database/users.json");
+const filePath = path.join(databasePath, "users.json");
 
 export class UserRepository {
-  async findAll() {
-    const data = await fs.readFile(filePath, "utf-8");
+  async findAll(): Promise<User[]> {
+    const users = await fs.readFile(filePath, "utf-8");
 
-    return JSON.parse(data);
+    return JSON.parse(users);
   }
 
-  async findOne(userId: string) {
+  async findOne(userId: string): Promise<User> {
     const users = await this.findAll();
 
-    return users.find((user: User) => user.id === userId);
+    const user = users.find((user: User) => user.id === userId);
+    if (!user) throw { status: 404, message: "Usuário não encontrado." };
+
+    return user;
   }
 
   async findByEmailOrUsername(identifier: string) {
@@ -28,7 +32,7 @@ export class UserRepository {
     );
   }
 
-  async create(user: object) {
+  async create(user: User): Promise<User> {
     const users = await this.findAll();
 
     users.push(user);
@@ -38,13 +42,16 @@ export class UserRepository {
     return user;
   }
 
-  async update(userId: string, data: Partial<User>) {
+  async update(userId: string, data: Partial<User>): Promise<User> {
     const users = await this.findAll();
 
     const index = users.findIndex((user: any) => user.id === userId);
 
+    const user = users[index];
+    if (!user) throw { status: 404, message: "Usuário não encontrado." };
+
     users[index] = {
-      ...users[index],
+      ...user,
       ...data,
     };
 

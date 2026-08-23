@@ -10,27 +10,35 @@ export class CourseService {
       id: crypto.randomUUID(),
       ...safeData,
     };
+    
     return await this.repository.create(newCourse);
   }
 
   async findAll() {
     return await this.repository.findAll();
   }
-
+  
   async findOne(courseId: string) {
     return await this.repository.findOne(courseId);
+  }
+  
+  async findCourseWithEnrollment() {
+    return await this.repository.findCourseWithEnrollment();
   }
 
   async update(courseId: string, data: Partial<Course>) {
     const { id, ...safeData } = data as any;
+    
     const exists = await this.repository.findOne(courseId);
     if (!exists) throw { status: 404, message: "Curso não encontrado." };
+
     return await this.repository.update(courseId, safeData);
   }
 
   async delete(courseId: string) {
     const exists = await this.repository.findOne(courseId);
     if (!exists) throw { status: 404, message: "Curso não encontrado." };
+
     return await this.repository.delete(courseId);
   }
 }

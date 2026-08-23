@@ -1,8 +1,10 @@
+import type { EnrollmentEnum } from "../enums/enrollment.enum.js";
+
 export class Enrollment {
   id!: string;
   userId!: string;
   courseId!: string;
-  status!: string;
+  status!: EnrollmentEnum;
   enrolledAt!: Date;
   cancelledAt!: Date;
 }

@@ -1,22 +1,33 @@
 import fs from "node:fs/promises";
 import path from "node:path";
 import type { Course } from "../models/courses.model.js";
+import { databasePath } from "../config/database.js";
 
-const filePath = path.resolve("src/database/courses.json");
+const filePath = path.resolve(databasePath, "courses.json");
 
 export class CourseRepository {
-  async findAll() {
-    const data = await fs.readFile(filePath, "utf-8");
+  async findAll(): Promise<Course[]> {
+    const courses = await fs.readFile(filePath, "utf-8");
 
-    return JSON.parse(data);
+    return JSON.parse(courses);
   }
 
-  async findOne(courseId: string) {
+  async findOne(courseId: string): Promise<Course> {
     const courses = await this.findAll();
-    return courses.find((course: Course) => course.id === courseId);
+    const course = courses.find((course: Course) => course.id === courseId);
+
+    if (!course) throw { status: 404, message: "Curso não encontrado." };
+
+    return course;
   }
 
-  async create(course: object) {
+  async findCourseWithEnrollment(): Promise<Course> {
+    const courses = await fs.readFile(filePath, "utf-8");
+
+    return JSON.parse(courses);
+  }
+
+  async create(course: Course): Promise<Course> {
     const courses = await this.findAll();
 
     courses.push(course);
@@ -29,9 +40,12 @@ export class CourseRepository {
   async update(courseId: string, data: Partial<Course>) {
     const courses = await this.findAll();
     const index = courses.findIndex((course: Course) => course.id === courseId);
+    const course = courses[index];
+
+    if (!course) throw { status: 404, message: "Curso não encontrado." };
 
     courses[index] = {
-      ...courses[index],
+      ...course,
       ...data,
     };
 

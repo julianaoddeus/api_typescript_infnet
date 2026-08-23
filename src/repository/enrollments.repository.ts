@@ -1,30 +1,36 @@
 import fs from "node:fs/promises";
 import path from "node:path";
 import type { Enrollment } from "../models/enrollment.model.js";
+import { databasePath } from "../config/database.js";
 
-const filePath = path.resolve("src/database/enrollments.json");
+const filePath = path.resolve(databasePath, "enrollments.json");
 
 export class EnrollmentRepository {
-  async findAll() {
-    const data = await fs.readFile(filePath, "utf-8");
+  async findAll(): Promise<Enrollment[]> {
+    const enrollments = await fs.readFile(filePath, "utf-8");
 
-    return JSON.parse(data);
+    return JSON.parse(enrollments);
   }
 
-  async findOne(enrollmentId: string) {
+  async findOne(enrollmentId: string): Promise<Enrollment> {
     const enrollments = await this.findAll();
 
-    return enrollments.find(
+    const enrollment = enrollments.find(
       (enrollment: Enrollment) => enrollment.id === enrollmentId,
     );
+    if (!enrollment)
+      throw { status: 404, message: "Inscrição não encontrada." };
+
+    return enrollment;
   }
 
-  async findByUser(userId: string) {
+  async findByUser(userId: string): Promise<Enrollment[]> {
     const enrollments = await this.findAll();
+console.log(enrollments)
     return enrollments.filter((e: Enrollment) => e.userId === userId);
   }
 
-  async create(enrollment: object) {
+  async create(enrollment: Enrollment) {
     const enrollments = await this.findAll();
 
     enrollments.push(enrollment);
@@ -40,9 +46,13 @@ export class EnrollmentRepository {
     const index = enrollments.findIndex(
       (enrollment: any) => enrollment.id === enrollmentId,
     );
+    const enrollment = enrollments[index];
+
+    if (!enrollment)
+      throw { status: 404, message: "Inscrição não encontrada." };
 
     enrollments[index] = {
-      ...enrollments[index],
+      ...enrollment,
       ...data,
     };
 

@@ -1,3 +1,368 @@
 [
-  
+  {
+    "date": "2026-08-22T23:27:30.211Z",
+    "method": "POST",
+    "path": "/users",
+    "duration": "60ms"
+  },
+  {
+    "date": "2026-08-22T23:27:54.643Z",
+    "method": "POST",
+    "path": "/auth/login",
+    "duration": "1ms"
+  },
+  {
+    "date": "2026-08-22T23:28:42.546Z",
+    "method": "POST",
+    "path": "/auth/login",
+    "duration": "55ms"
+  },
+  {
+    "date": "2026-08-22T23:28:56.920Z",
+    "method": "POST",
+    "path": "/auth/login",
+    "duration": "55ms"
+  },
+  {
+    "date": "2026-08-22T23:29:12.926Z",
+    "method": "GET",
+    "path": "/users",
+    "duration": "0ms"
+  },
+  {
+    "date": "2026-08-22T23:29:20.455Z",
+    "method": "GET",
+    "path": "/users",
+    "duration": "2ms"
+  },
+  {
+    "date": "2026-08-22T23:29:47.806Z",
+    "method": "POST",
+    "path": "/users",
+    "duration": "54ms"
+  },
+  {
+    "date": "2026-08-22T23:30:07.543Z",
+    "method": "POST",
+    "path": "/auth/login",
+    "duration": "55ms"
+  },
+  {
+    "date": "2026-08-22T23:30:15.953Z",
+    "method": "GET",
+    "path": "/users",
+    "duration": "1ms"
+  },
+  {
+    "date": "2026-08-22T23:30:24.717Z",
+    "method": "POST",
+    "path": "/courses",
+    "duration": "0ms"
+  },
+  {
+    "date": "2026-08-23T11:17:53.024Z",
+    "method": "POST",
+    "path": "/auth/login",
+    "duration": "77ms"
+  },
+  {
+    "date": "2026-08-23T11:19:20.304Z",
+    "method": "POST",
+    "path": "/users",
+    "duration": "2ms"
+  },
+  {
+    "date": "2026-08-23T11:20:08.255Z",
+    "method": "GET",
+    "path": "/users/7141fa54-142a-4ba6-ab20-a8f62a2dd244/enrollments",
+    "duration": "2ms"
+  },
+  {
+    "date": "2026-08-23T11:20:29.104Z",
+    "method": "GET",
+    "path": "/users/7141fa54-142a-4ba6-ab20-a8f62a2dd244/enrollments",
+    "duration": "3ms"
+  },
+  {
+    "date": "2026-08-23T11:22:20.378Z",
+    "method": "PATCH",
+    "path": "/enrollments/7fa80ef2-f1bb-493f-85ee-d68693b24d30",
+    "duration": "1ms"
+  },
+  {
+    "date": "2026-08-23T11:23:14.107Z",
+    "method": "POST",
+    "path": "/enrollments/7fa80ef2-f1bb-493f-85ee-d68693b24d30",
+    "duration": "4ms"
+  },
+  {
+    "date": "2026-08-23T11:23:20.894Z",
+    "method": "POST",
+    "path": "/enrollments",
+    "duration": "27ms"
+  },
+  {
+    "date": "2026-08-23T11:23:46.460Z",
+    "method": "GET",
+    "path": "/users/7141fa54-142a-4ba6-ab20-a8f62a2dd244/enrollments",
+    "duration": "1ms"
+  },
+  {
+    "date": "2026-08-23T11:24:04.080Z",
+    "method": "GET",
+    "path": "/users/7141fa54-142a-4ba6-ab20-a8f62a2dd244/enrollments",
+    "duration": "2ms"
+  },
+  {
+    "date": "2026-08-23T13:07:42.216Z",
+    "method": "POST",
+    "path": "/enrollments",
+    "duration": "8ms"
+  },
+  {
+    "date": "2026-08-23T13:08:32.711Z",
+    "method": "POST",
+    "path": "/users",
+    "duration": "6ms"
+  },
+  {
+    "date": "2026-08-23T13:09:14.792Z",
+    "method": "POST",
+    "path": "/users",
+    "duration": "1ms"
+  },
+  {
+    "date": "2026-08-23T13:10:39.494Z",
+    "method": "POST",
+    "path": "/users",
+    "duration": "1ms"
+  },
+  {
+    "date": "2026-08-23T13:10:50.545Z",
+    "method": "POST",
+    "path": "/users",
+    "duration": "1ms"
+  },
+  {
+    "date": "2026-08-23T13:12:52.878Z",
+    "method": "POST",
+    "path": "/users",
+    "duration": "1ms"
+  },
+  {
+    "date": "2026-08-23T13:13:47.690Z",
+    "method": "POST",
+    "path": "/users",
+    "duration": "1ms"
+  },
+  {
+    "date": "2026-08-23T13:14:06.195Z",
+    "method": "POST",
+    "path": "/users",
+    "duration": "6ms"
+  },
+  {
+    "date": "2026-08-23T13:16:53.973Z",
+    "method": "POST",
+    "path": "/users",
+    "duration": "1ms"
+  },
+  {
+    "date": "2026-08-23T13:17:36.876Z",
+    "method": "POST",
+    "path": "/users",
+    "duration": "5ms"
+  },
+  {
+    "date": "2026-08-23T13:20:26.564Z",
+    "method": "POST",
+    "path": "/users",
+    "duration": "60ms"
+  },
+  {
+    "date": "2026-08-23T13:21:31.422Z",
+    "method": "POST",
+    "path": "/auth/login",
+    "duration": "61ms"
+  },
+  {
+    "date": "2026-08-23T13:21:50.455Z",
+    "method": "POST",
+    "path": "/auth/login",
+    "duration": "54ms"
+  },
+  {
+    "date": "2026-08-23T13:22:25.510Z",
+    "method": "GET",
+    "path": "/courses",
+    "duration": "2ms"
+  },
+  {
+    "date": "2026-08-23T13:22:42.233Z",
+    "method": "GET",
+    "path": "/courses",
+    "duration": "1ms"
+  },
+  {
+    "date": "2026-08-23T13:28:53.596Z",
+    "method": "POST",
+    "path": "/enrollments",
+    "duration": "3ms"
+  },
+  {
+    "date": "2026-08-23T13:29:13.674Z",
+    "method": "POST",
+    "path": "/enrollments",
+    "duration": "4ms"
+  },
+  {
+    "date": "2026-08-23T13:29:28.008Z",
+    "method": "POST",
+    "path": "/enrollments",
+    "duration": "3ms"
+  },
+  {
+    "date": "2026-08-23T13:29:59.548Z",
+    "method": "GET",
+    "path": "/enrollments",
+    "duration": "1ms"
+  },
+  {
+    "date": "2026-08-23T13:30:10.833Z",
+    "method": "GET",
+    "path": "/enrollments",
+    "duration": "1ms"
+  },
+  {
+    "date": "2026-08-23T13:30:46.828Z",
+    "method": "GET",
+    "path": "/courses/enrollments/16fcd3f9-940f-4fe9-a0ad-4e7228dac056",
+    "duration": "0ms"
+  },
+  {
+    "date": "2026-08-23T13:31:02.488Z",
+    "method": "GET",
+    "path": "/courses/enrollments/16fcd3f9-940f-4fe9-a0ad-4e7228dac056",
+    "duration": "2ms"
+  },
+  {
+    "date": "2026-08-23T13:33:29.951Z",
+    "method": "GET",
+    "path": "/courses/enrollments/16fcd3f9-940f-4fe9-a0ad-4e7228dac056",
+    "duration": "6ms"
+  },
+  {
+    "date": "2026-08-23T13:33:37.163Z",
+    "method": "GET",
+    "path": "/courses",
+    "duration": "1ms"
+  },
+  {
+    "date": "2026-08-23T13:33:41.113Z",
+    "method": "GET",
+    "path": "/courses/enrollments/16fcd3f9-940f-4fe9-a0ad-4e7228dac056",
+    "duration": "1ms"
+  },
+  {
+    "date": "2026-08-23T13:36:58.058Z",
+    "method": "GET",
+    "path": "/courses/enrollments/16fcd3f9-940f-4fe9-a0ad-4e7228dac056",
+    "duration": "1ms"
+  },
+  {
+    "date": "2026-08-23T13:37:08.289Z",
+    "method": "GET",
+    "path": "/courses/enrollments/16fcd3f9-940f-4fe9-a0ad-4e7228dac056",
+    "duration": "6ms"
+  },
+  {
+    "date": "2026-08-23T13:37:44.082Z",
+    "method": "GET",
+    "path": "/courses/enrollments/16fcd3f9-940f-4fe9-a0ad-4e7228dac056",
+    "duration": "8ms"
+  },
+  {
+    "date": "2026-08-23T13:38:19.513Z",
+    "method": "GET",
+    "path": "/courses/enrollments/16fcd3f9-940f-4fe9-a0ad-4e7228dac056",
+    "duration": "1ms"
+  },
+  {
+    "date": "2026-08-23T13:38:27.057Z",
+    "method": "GET",
+    "path": "/courses/enrollments/16fcd3f9-940f-4fe9-a0ad-4e7228dac056",
+    "duration": "9ms"
+  },
+  {
+    "date": "2026-08-23T13:38:44.154Z",
+    "method": "GET",
+    "path": "/courses/enrollments/16fcd3f9-940f-4fe9-a0ad-4e7228dac056",
+    "duration": "6ms"
+  },
+  {
+    "date": "2026-08-23T13:39:01.448Z",
+    "method": "GET",
+    "path": "/courses/enrollments/16fcd3f9-940f-4fe9-a0ad-4e7228dac056",
+    "duration": "7ms"
+  },
+  {
+    "date": "2026-08-23T13:39:52.308Z",
+    "method": "GET",
+    "path": "/courses/enrollments/16fcd3f9-940f-4fe9-a0ad-4e7228dac056",
+    "duration": "6ms"
+  },
+  {
+    "date": "2026-08-23T13:42:13.555Z",
+    "method": "GET",
+    "path": "/courses/enrollments/16fcd3f9-940f-4fe9-a0ad-4e7228dac056",
+    "duration": "2ms"
+  },
+  {
+    "date": "2026-08-23T13:42:20.983Z",
+    "method": "GET",
+    "path": "/courses/enrollments/16fcd3f9-940f-4fe9-a0ad-4e7228dac056",
+    "duration": "7ms"
+  },
+  {
+    "date": "2026-08-23T13:43:39.716Z",
+    "method": "GET",
+    "path": "/courses/enrollments/16fcd3f9-940f-4fe9-a0ad-4e7228dac056",
+    "duration": "6ms"
+  },
+  {
+    "date": "2026-08-23T13:43:40.442Z",
+    "method": "GET",
+    "path": "/courses/enrollments/16fcd3f9-940f-4fe9-a0ad-4e7228dac056",
+    "duration": "2ms"
+  },
+  {
+    "date": "2026-08-23T13:43:41.205Z",
+    "method": "GET",
+    "path": "/courses/enrollments/16fcd3f9-940f-4fe9-a0ad-4e7228dac056",
+    "duration": "1ms"
+  },
+  {
+    "date": "2026-08-23T13:43:41.582Z",
+    "method": "GET",
+    "path": "/courses/enrollments/16fcd3f9-940f-4fe9-a0ad-4e7228dac056",
+    "duration": "1ms"
+  },
+  {
+    "date": "2026-08-23T13:43:41.804Z",
+    "method": "GET",
+    "path": "/courses/enrollments/16fcd3f9-940f-4fe9-a0ad-4e7228dac056",
+    "duration": "1ms"
+  },
+  {
+    "date": "2026-08-23T13:44:58.764Z",
+    "method": "GET",
+    "path": "/courses/enrollments/16fcd3f9-940f-4fe9-a0ad-4e7228dac056",
+    "duration": "2ms"
+  },
+  {
+    "date": "2026-08-23T13:45:06.263Z",
+    "method": "GET",
+    "path": "/courses/enrollments/16fcd3f9-940f-4fe9-a0ad-4e7228dac056",
+    "duration": "8ms"
+  }
 ]

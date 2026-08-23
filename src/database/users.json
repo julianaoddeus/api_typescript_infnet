@@ -1,9 +1,16 @@
 [
   {
-    "id": "cc65311d-1ced-4ab6-9c13-3cd70b851c52",
-    "username": "Julia Rodrigues",
-    "email": "julia@email.com",
-    "password": "$2b$10$u7Xy7lDFbtWwvYJH9yd0k.AvJlTANRatMai0NMH.v99Y2H3iPZAx6",
+    "id": "39305437-5423-48d0-8092-e8977533d7ab",
+    "username": "Juliana Oliveira",
+    "email": "juliana@email.com",
+    "password": "$2b$10$j1l9lLJqJvguVa7BdfUxaO8hJV/4g8afeU89gb0oDsTRwMikZS7rm",
     "role": "ADMIN"
+  },
+  {
+    "id": "16fcd3f9-940f-4fe9-a0ad-4e7228dac056",
+    "username": "juliana",
+    "email": "juh@email.com",
+    "password": "$2b$10$QUN/hTooOU8z5NdTvJ.IjuXbmAHzGuYQGNci04zQOzLCAiL5Vbm8C",
+    "role": "READER"
   }
 ]

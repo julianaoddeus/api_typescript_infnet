@@ -1,10 +1,14 @@
 import type { Request, Response } from "express";
 import type { CourseService } from "../services/course.service.js";
-import {courseSchema } from "../validators/course.validator.js";
-
+import { courseSchema } from "../validators/course.validator.js";
+import type { Course } from "../models/courses.model.js";
+import type { EnrollmentService } from "../services/enrollments.service.js";
 
 export class CourseController {
-  constructor(private service: CourseService) {}
+  constructor(
+    private service: CourseService,
+    private enrollmentService: EnrollmentService,
+  ) {}
 
   create = async (req: Request, res: Response) => {
     try {
@@ -14,9 +18,10 @@ export class CourseController {
         return res
           .status(400)
           .json({ errors: parsed.error.flatten().fieldErrors });
-      }      
+      }
 
       const course = await this.service.create(parsed.data);
+
       return res.status(201).json(course);
     } catch (err: any) {
       return res
@@ -28,6 +33,7 @@ export class CourseController {
   findAll = async (req: Request, res: Response) => {
     try {
       const courses = await this.service.findAll();
+
       return res.status(200).json(courses);
     } catch (err: any) {
       return res.status(500).json({ message: "Erro ao buscar cursos" });
@@ -38,11 +44,33 @@ export class CourseController {
     try {
       const id = req.params?.id as string;
       const course = await this.service.findOne(id);
+
       if (!course)
         return res.status(404).json({ message: "Curso não encontrado" });
+
       return res.status(200).json(course);
     } catch (err: any) {
       return res.status(500).json({ message: "Erro ao buscar curso" });
+    }
+  };
+
+  findCourseWithEnrollment = async (req: Request, res: Response) => {
+    try {
+      const userId = req.params?.userId as string;
+
+      if (!userId)
+        return res.status(400).json({ message: "Usuário não informado" });
+
+      const courses = await this.service.findAll();
+      const enrollments = await this.enrollmentService.findByUser(userId);
+      console.log(enrollments);
+      const coursesWithEnrollments = courses.filter((course: Course) =>
+        enrollments.some((enr) => enr.courseId === course.id),
+      );
+
+      return res.status(200).json(coursesWithEnrollments);
+    } catch (err: any) {
+      return res.status(500).json({ message: "Erro ao buscar cursos" });
     }
   };
 
