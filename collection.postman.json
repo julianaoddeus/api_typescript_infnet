@@ -16,7 +16,7 @@
           "request": {
             "method": "POST",
             "header": [{ "key": "Content-Type", "value": "application/json" }],
-            "url": "{{baseUrl}}/auth/login",
+            "url": "{{baseUrl}}/login",
             "body": {
               "mode": "raw",
               "raw": "{\n  \"email\": \"admin@email.com\",\n  \"password\": \"senha123\"\n}"

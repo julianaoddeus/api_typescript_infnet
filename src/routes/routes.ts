@@ -15,7 +15,7 @@ router.get("/users/:id", requireAuth, requireRole(UserRole.ADMIN), userControlle
 router.put("/users/:id", requireAuth, requireRole(UserRole.ADMIN), userController.update);
 router.delete("/users/:id", requireAuth, requireRole(UserRole.ADMIN), userController.delete);
 
-router.post("/auth/login", authController.login);
+router.post("/login", authController.login);
 
 router.post("/courses", requireAuth, requireRole(UserRole.ADMIN), courseController.create);
 router.get("/courses", requireAuth, courseController.findAll);
