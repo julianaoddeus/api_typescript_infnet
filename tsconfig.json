@@ -2,16 +2,15 @@
   // Visit https://aka.ms/tsconfig to read more about this file
   "compilerOptions": {
     // File Layout
-    // "rootDir": "./src",
-    // "outDir": "./dist",
     "target": "ES2022",
     "module": "NodeNext",
+    "experimentalDecorators": true,
+    "emitDecoratorMetadata": true,
     "moduleResolution": "NodeNext",
-    "outDir": "./dist",
     "rootDir": "./src",
-    "strict": true,
+    "outDir": "./dist",
     "esModuleInterop": true,
-    "skipLibCheck": true,
+
     // Environment Settings
     // See also https://aka.ms/tsconfig/module
 
@@ -47,5 +46,4 @@
     "moduleDetection": "force",
     "skipLibCheck": true
   }
-  
 }

@@ -17,7 +17,7 @@ const courseRepository = new CourseRepository();
 const courseService = new CourseService(courseRepository);
 
 const enrollmentRepository = new EnrollmentRepository();
-const enrollmentService = new EnrollmentService(enrollmentRepository, userRepository, courseRepository);
+const enrollmentService = new EnrollmentService(enrollmentRepository);
 
 export const courseController = new CourseController(courseService, enrollmentService);
 export const enrollmentController = new EnrollmentController(enrollmentService);

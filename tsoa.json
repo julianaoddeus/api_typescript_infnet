@@ -1,0 +1,10 @@
+{
+  "entreFiles": "src/app.ts",
+  "controllerPathGlobs": ["src/controllers/**/*.ts"],
+  "spec": {
+    "outputDirectory": "dist/build"
+  },
+  "routes": {
+    "routesDir": "src/build"
+  }
+}
