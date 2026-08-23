@@ -22,13 +22,5 @@
     "startDate": "2026-10-19",
     "stock": 60,
     "imageURL": "https://placehold.co/200x200"
-  },
-  {
-    "id": "9c2494c5-8fff-4eb6-8dfc-c977605018eb",
-    "name": "Curso de TypeScript",
-    "description": "Aprenda TypeScript do zero ao avançado",
-    "startDate": "2025-08-01T00:00:00.000Z",
-    "stock": 30,
-    "imageURL": "https://example.com/image.png"
   }
 ]

@@ -63,10 +63,25 @@ export class CourseController {
 
       const courses = await this.service.findAll();
       const enrollments = await this.enrollmentService.findByUser(userId);
-      console.log(enrollments);
-      const coursesWithEnrollments = courses.filter((course: Course) =>
-        enrollments.some((enr) => enr.courseId === course.id),
-      );
+
+      const coursesWithEnrollments = courses
+        .map((course: Course) => {
+          const enrollment = enrollments.find((e) => e.courseId === course.id);
+
+          if (!enrollment) return null;
+
+          return {
+            ...course,
+
+            enrollment: {
+              id: enrollment.id,
+              status: enrollment.status,
+              enrolledAt: enrollment.enrolledAt ?? "",
+              canceledAt: enrollment.canceledAt ?? "",
+            },
+          };
+        })
+        .filter((course) => course !== null);
 
       return res.status(200).json(coursesWithEnrollments);
     } catch (err: any) {
@@ -85,7 +100,9 @@ export class CourseController {
       }
 
       const id = req.params?.id as string;
-      const course = await this.service.update(id, parsed.data);
+      const { status, ...data } = parsed.data;
+
+      const course = await this.service.update(id, data);
       return res.status(200).json(course);
     } catch (err: any) {
       return res

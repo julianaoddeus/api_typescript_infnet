@@ -21,12 +21,6 @@ export class CourseRepository {
     return course;
   }
 
-  async findCourseWithEnrollment(): Promise<Course> {
-    const courses = await fs.readFile(filePath, "utf-8");
-
-    return JSON.parse(courses);
-  }
-
   async create(course: Course): Promise<Course> {
     const courses = await this.findAll();
 

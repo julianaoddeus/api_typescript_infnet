@@ -26,7 +26,7 @@ export class EnrollmentRepository {
 
   async findByUser(userId: string): Promise<Enrollment[]> {
     const enrollments = await this.findAll();
-console.log(enrollments)
+
     return enrollments.filter((e: Enrollment) => e.userId === userId);
   }
 

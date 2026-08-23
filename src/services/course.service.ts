@@ -27,10 +27,6 @@ export class CourseService {
     return await this.repository.findOne(courseId);
   }
 
-  async findCourseWithEnrollment() {
-    return await this.repository.findCourseWithEnrollment();
-  }
-
   async update(courseId: string, data: Partial<Course>) {
     const { id, ...safeData } = data as any;
 

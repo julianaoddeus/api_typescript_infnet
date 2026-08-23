@@ -1,4 +1,6 @@
 import z from "zod";
+import { EnrollmentEnum } from "../enums/enrollment.enum.js";
+
 
 export const courseSchema = z.object({
   name: z
@@ -28,4 +30,5 @@ export const courseSchema = z.object({
   imageURL: z.string({
     error: "Imagem para capa do curso é obrigatória.",
   }),
+  status: z.enum(EnrollmentEnum).optional(),
 });
