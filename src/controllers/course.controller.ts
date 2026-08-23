@@ -64,24 +64,20 @@ export class CourseController {
       const courses = await this.service.findAll();
       const enrollments = await this.enrollmentService.findByUser(userId);
 
-      const coursesWithEnrollments = courses
-        .map((course: Course) => {
-          const enrollment = enrollments.find((e) => e.courseId === course.id);
+      const coursesWithEnrollments = enrollments.map((enrollment) => {
+        const course = courses.find(
+          (course) => course.id == enrollment.courseId,
+        );
 
-          if (!enrollment) return null;
+        if (!course) return null;
 
-          return {
-            ...course,
-
-            enrollment: {
-              id: enrollment.id,
-              status: enrollment.status,
-              enrolledAt: enrollment.enrolledAt ?? "",
-              canceledAt: enrollment.canceledAt ?? "",
-            },
-          };
-        })
-        .filter((course) => course !== null);
+        return {
+          ...course,
+          status: enrollment.status,
+          enrolledAt: enrollment.enrolledAt,
+          canceledAt: enrollment.canceledAt,
+        };
+      });
 
       return res.status(200).json(coursesWithEnrollments);
     } catch (err: any) {
