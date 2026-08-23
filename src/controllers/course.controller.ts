@@ -1,7 +1,6 @@
 import type { Request, Response } from "express";
 import type { CourseService } from "../services/course.service.js";
 import { courseSchema } from "../validators/course.validator.js";
-import type { Course } from "../models/courses.model.js";
 import type { EnrollmentService } from "../services/enrollments.service.js";
 
 export class CourseController {
