@@ -8,7 +8,9 @@ describe("User API", () => {
   const token = "jwt-token-valido";
 
   //os testes funcionaram mas para funciona
-  // foi preciso passar app abaixo
+  // foi preciso passar app abaixo pq da conflito 
+  //  SyntaxError: Identifier '__dirname' has already been declared
+  // é um  conflito ESM/CommonJS
 
   // const app = express();
 
