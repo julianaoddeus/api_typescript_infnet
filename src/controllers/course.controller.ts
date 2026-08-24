@@ -65,7 +65,7 @@ export class CourseController {
 
       const coursesWithEnrollments = enrollments.map((enrollment) => {
         const course = courses.find(
-          (course) => course.id == enrollment.courseId,
+          (course) => course.id === enrollment.courseId,
         );
 
         if (!course) return null;

@@ -1,1 +1,32 @@
-[]
+[
+  {
+    "date": "2026-08-24T22:53:48.898Z",
+    "method": "GET",
+    "path": "/",
+    "duration": "4ms"
+  },
+  {
+    "date": "2026-08-24T22:53:48.929Z",
+    "method": "GET",
+    "path": "/swagger-ui-standalone-preset.js",
+    "duration": "1ms"
+  },
+  {
+    "date": "2026-08-24T22:53:48.930Z",
+    "method": "GET",
+    "path": "/swagger-ui-init.js",
+    "duration": "0ms"
+  },
+  {
+    "date": "2026-08-24T22:53:49.033Z",
+    "method": "GET",
+    "path": "/favicon-32x32.png",
+    "duration": "1ms"
+  },
+  {
+    "date": "2026-08-24T22:54:10.290Z",
+    "method": "POST",
+    "path": "/login",
+    "duration": "57ms"
+  }
+]
